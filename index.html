@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>~/sahil — BI & Analytics Engineer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0f1117;
+  --surface: #161822;
+  --border: #2a2d3a;
+  --green: #4ade80;
+  --green-dim: #22c55e;
+  --green-glow: rgba(74, 222, 128, 0.15);
+  --text: #e2e8f0;
+  --text-dim: #8b92a8;
+  --text-muted: #5a6178;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px;
+  background: rgba(15, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+nav .logo { color: var(--green); font-weight: 600; font-size: 15px; text-decoration: none; }
+nav .links { display: flex; gap: 28px; align-items: center; }
+nav .links a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+nav .links a:hover { color: var(--green); }
+nav .cv-btn {
+  border: 1px solid var(--green);
+  color: var(--green);
+  padding: 6px 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav .cv-btn:hover { background: var(--green); color: var(--bg); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 60px 60px;
+  gap: 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.hero-left { flex: 1; }
+.hero-right { flex-shrink: 0; }
+
+/* Terminal */
+.terminal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  max-width: 640px;
+}
+.terminal-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 16px;
+  background: rgba(42, 45, 58, 0.5);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.terminal-bar .dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+.terminal-bar span { margin-left: 8px; }
+.terminal-body {
+  padding: 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--text-dim);
+}
+.terminal-body .cmd { color: var(--text); }
+.terminal-body .ok { color: var(--green); }
+.terminal-body .arrow { color: var(--green); margin-right: 4px; }
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+}
+.badge .pulse {
+  width: 8px; height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-family: var(--sans);
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+}
+
+.hero .role {
+  font-family: var(--mono);
+  font-size: 18px;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+.hero .role::before { content: '> '; opacity: 0.5; }
+.cursor {
+  display: inline-block;
+  width: 10px; height: 22px;
+  background: var(--green);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.hero .tagline {
+  font-size: 16px;
+  color: var(--text-dim);
+  max-width: 540px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.hero-actions { display: flex; gap: 16px; align-items: center; margin-bottom: 28px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green);
+  color: var(--bg);
+  padding: 14px 28px;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--green-dim); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent;
+  color: var(--text);
+  padding: 14px 28px;
+  font-family: var(--mono);
+  font-size: 14px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--text-dim); }
+
+.social-links { display: flex; gap: 16px; }
+.social-links a {
+  color: var(--text-muted);
+  transition: color 0.2s;
+  display: flex; align-items: center;
+}
+.social-links a:hover { color: var(--green); }
+.social-links svg { width: 20px; height: 20px; }
+
+/* ID Card */
+.id-card {
+  width: 300px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.id-card::before {
+  content: '';
+  position: absolute;
+  top: -1px; right: -1px;
+  width: 14px; height: 14px;
+  background: var(--green);
+  border-radius: 0 12px 0 0;
+}
+.id-card .id-header {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--green);
+  margin-bottom: 24px;
+}
+.id-card .id-header .diamond { font-size: 10px; }
+.id-card .id-name {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.id-card .id-role {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--green);
+  margin-bottom: 24px;
+}
+.id-card .id-role::before { content: '> '; opacity: 0.5; }
+.id-card .id-footer {
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.id-card .id-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.id-card .id-avatar {
+  width: 48px; height: 48px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--bg);
+}
+
+/* Lanyard */
+.lanyard-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; }
+.lanyard-clip {
+  width: 24px; height: 24px;
+  border: 3px solid var(--text-muted);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+.lanyard-strap {
+  width: 3px;
+  height: 40px;
+  background: var(--text-muted);
+  margin-top: -2px;
+  margin-bottom: -2px;
+}
+
+/* SECTIONS */
+section {
+  padding: 80px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+section h2 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 40px;
+}
+
+/* EXPERIENCE */
+.timeline { position: relative; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--border);
+}
+.timeline-item {
+  padding-left: 32px;
+  margin-bottom: 40px;
+  position: relative;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -4px; top: 8px;
+  width: 9px; height: 9px;
+  background: var(--green);
+  border-radius: 50%;
+}
+.timeline-item .period {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.timeline-item h3 { font-size: 18px; font-weight: 600; margin-bottom: 2px; }
+.timeline-item .company { color: var(--green); font-size: 14px; margin-bottom: 8px; }
+.timeline-item p { color: var(--text-dim); font-size: 14px; line-height: 1.7; }
+
+/* SKILLS GRID */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+.skill-card:hover { border-color: var(--green); }
+.skill-card h4 {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  background: rgba(42, 45, 58, 0.6);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+/* PROJECTS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  transition: all 0.2s;
+}
+.project-card:hover { border-color: var(--green); transform: translateY(-2px); }
+.project-card h4 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.project-card .project-desc { color: var(--text-dim); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+.project-card .project-tech {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* CERTS */
+.certs-list { display: flex; flex-direction: column; gap: 12px; }
+.cert-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+}
+.cert-item .cert-icon { color: var(--green); font-family: var(--mono); font-size: 16px; }
+.cert-item .cert-status {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.cert-item .cert-status.active { color: var(--green); }
+
+/* CONTACT */
+.contact-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 600px;
+}
+.contact-box p { color: var(--text-dim); font-size: 15px; margin-bottom: 24px; line-height: 1.7; }
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+.contact-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.contact-link:hover { color: var(--green); }
+.contact-link svg { width: 18px; height: 18px; color: var(--green); }
+
+/* FOOTER */
+footer {
+  padding: 32px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* JOKE BUTTON */
+.joke-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--green);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 50;
+}
+.joke-btn:hover { background: var(--green-glow); }
+
+/* SCROLL PROGRESS */
+.scroll-progress {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  z-index: 50;
+  display: flex; align-items: center; gap: 8px;
+}
+.progress-bar {
+  width: 60px; height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--green);
+  width: 0%;
+  transition: width 0.1s;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  nav { padding: 12px 20px; }
+  nav .links { display: none; }
+  .hero { flex-direction: column; padding: 100px 24px 40px; gap: 40px; }
+  .hero-right { order: -1; }
+  .id-card { width: 260px; }
+  section { padding: 60px 24px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">~/sahil</a>
+  <div class="links">
+    <a href="#about">about</a>
+    <a href="#experience">experience</a>
+    <a href="#projects">projects</a>
+    <a href="#skills">skills</a>
+    <a href="#certs">certs</a>
+    <a href="#contact">contact</a>
+    <a href="#" class="cv-btn">cv.pdf</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="hero-left">
+    <!-- Terminal -->
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span>sahil@dev: ~/portfolio</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="cmd">$ npx sahilprakash --run</span></div>
+        <div><span class="arrow">▸</span> booting portfolio v1.0.0</div>
+        <div><span class="arrow">▸</span> loading profile ............... <span class="ok">ok</span></div>
+        <div><span class="arrow">▸</span> BI & Analytics Engineer ...... <span class="ok">ok</span></div>
+        <div><span class="arrow">▸</span> Power BI · DAX · GCP ........ <span class="ok">ok</span></div>
+        <div><span class="arrow">▸</span> Power Platform · AI ......... <span class="ok">ok</span></div>
+        <div><span class="arrow">▸</span> ready.</div>
+      </div>
+    </div>
+
+    <div class="badge">
+      <span class="pulse"></span>
+      <span>◆ DEV ID#2003 · open to opportunities</span>
+    </div>
+
+    <h1>Sahil<br>Prakash</h1>
+
+    <div class="role">BI & Analytics Engineer<span class="cursor"></span></div>
+
+    <p class="tagline">
+      I build dashboards used by 500+ users, automate workflows across 10+ countries,
+      and ship AI-powered solutions on Power Platform & GCP — with clean data architecture baked in.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">view work →</a>
+      <a href="#" class="btn-secondary">📄 cv.pdf</a>
+    </div>
+
+    <div class="social-links">
+      <a href="https://github.com/sahilprakash" target="_blank" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/sahilprakash" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="mailto:sahilprakash33.sp@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="lanyard-wrapper">
+      <div class="lanyard-clip"></div>
+      <div class="lanyard-strap"></div>
+      <div class="id-card">
+        <div class="id-header">
+          <span class="diamond">◆</span> DEV ID#2003
+        </div>
+        <div class="id-name">SAHIL<br>PRAKASH</div>
+        <div class="id-role">BI & Analytics Engineer</div>
+        <div class="id-footer">
+          <div class="id-meta">
+            Hyderabad, IN<br>
+            PORTFOLIO · EDITION 2026
+          </div>
+          <div class="id-avatar">SP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// experience</div>
+  <h2>Where I've Built</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="period">Jul 2021 — Apr 2026</div>
+      <h3>Senior Software Engineer</h3>
+      <div class="company">Sopra Steria · Manitowoc (France)</div>
+      <p>
+        Built 20+ Power Automate flows across 10+ countries for a global crane manufacturer.
+        Shipped CEA & FAD Power Apps on Dataverse with RBAC.
+        Created PotainETech — a Copilot Studio agent with 41 components, Entra ID SSO,
+        English-French support, serving 90 MAU. Delivered dashboards used by 500+ users,
+        cutting 30% manual overhead and 10% report latency.
+      </p>
+    </div>
+    <div class="timeline-item">
+      <div class="period">Apr 2026 — Jul 2026</div>
+      <h3>Specialist — BI & Analytics</h3>
+      <div class="company">Eigen (formerly Egen / SpringML)</div>
+      <p>
+        Designed WeeklyBench immutable snapshot architecture resolving a multi-day bench count
+        discrepancy in Certinia PSA. Built Finance 360 dashboards (AR/AP/Working Capital) on
+        BigQuery. Stabilized the data layer for EDITH, Eigen's Gemini-based multi-agent AI platform.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// projects</div>
+  <h2>Selected Work</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h4>PotainETech Agent</h4>
+      <div class="project-desc">
+        Copilot Studio virtual agent for Manitowoc — 41 topics, Entra ID SSO,
+        bilingual English-French, 90 monthly active users across crane operations.
+      </div>
+      <div class="project-tech">copilot-studio · entra-id · dataverse · power-platform</div>
+    </div>
+    <div class="project-card">
+      <h4>CEA / FAD Power Apps</h4>
+      <div class="project-desc">
+        Capital Expenditure Approval & Fixed Asset Disposal apps on Dataverse with
+        role-based access control, multi-level approval workflows, and audit trails.
+      </div>
+      <div class="project-tech">power-apps · dataverse · power-automate · rbac</div>
+    </div>
+    <div class="project-card">
+      <h4>WeeklyBench Architecture</h4>
+      <div class="project-desc">
+        Immutable snapshot design that resolved in-place EVA record mutation issues in
+        Certinia PSA bench count analytics. Enabled reliable historical trend reporting.
+      </div>
+      <div class="project-tech">bigquery · certinia · data-architecture · sql</div>
+    </div>
+    <div class="project-card">
+      <h4>Finance 360 Dashboard</h4>
+      <div class="project-desc">
+        AR/AP/Working Capital dashboards on BigQuery views — unified financial ledger
+        serving leadership with real-time visibility into cash flow.
+      </div>
+      <div class="project-tech">bigquery · looker-studio · sql · data-modeling</div>
+    </div>
+    <div class="project-card">
+      <h4>Job Search Automation</h4>
+      <div class="project-desc">
+        GitHub-hosted pipeline: Adzuna API for job fetch, Anthropic API for fit scoring
+        and pitch generation, with a tracker for manual final submission.
+      </div>
+      <div class="project-tech">python · anthropic-api · adzuna-api · automation</div>
+    </div>
+    <div class="project-card">
+      <h4>Global Workflow Automation</h4>
+      <div class="project-desc">
+        20+ Power Automate cloud flows deployed across 10+ countries for Manitowoc,
+        streamlining crane operations and reducing manual overhead by 30%.
+      </div>
+      <div class="project-tech">power-automate · sharepoint · teams · global-ops</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// skills</div>
+  <h2>Tech Stack</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h4>BI & Visualization</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">DAX</span>
+        <span class="skill-tag">Looker Studio</span>
+        <span class="skill-tag">Data Modeling</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>Power Platform</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Power Apps</span>
+        <span class="skill-tag">Power Automate</span>
+        <span class="skill-tag">Copilot Studio</span>
+        <span class="skill-tag">Dataverse</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>Cloud & Data</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">GCP</span>
+        <span class="skill-tag">BigQuery</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>AI & Automation</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Anthropic API</span>
+        <span class="skill-tag">Gemini</span>
+        <span class="skill-tag">RAG</span>
+        <span class="skill-tag">LLMOps</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>Identity & Security</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Entra ID</span>
+        <span class="skill-tag">SSO</span>
+        <span class="skill-tag">RBAC</span>
+        <span class="skill-tag">RLS</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>DevOps & Tools</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">ALM</span>
+        <span class="skill-tag">Agile</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="section-label">// certifications</div>
+  <h2>Credentials</h2>
+  <div class="certs-list">
+    <div class="cert-item">
+      <span class="cert-icon">◆</span>
+      <span>PL-300 — Microsoft Power BI Data Analyst</span>
+      <span class="cert-status active">✓ certified</span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-icon">◆</span>
+      <span>DP-600 — Microsoft Fabric Analytics Engineer</span>
+      <span class="cert-status">in progress</span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-icon">◆</span>
+      <span>Databricks — Generative AI Fundamentals</span>
+      <span class="cert-status active">✓ certified</span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-icon">◆</span>
+      <span>ScrumStudy — Scrum Fundamentals Certified</span>
+      <span class="cert-status active">✓ certified</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">// contact</div>
+  <h2>Let's Connect</h2>
+  <div class="contact-box">
+    <p>
+      Open to roles in BI, Analytics Engineering, and Data Engineering.
+      Currently based in Hyderabad. Drop me a line.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:sahilprakash33.sp@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        sahilprakash33.sp@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/sahilprakash" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/sahilprakash
+      </a>
+      <a href="https://github.com/sahilprakash" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        github.com/sahilprakash
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>built with ☕ and claude · 2026</span>
+  <span>~/sahil</span>
+</footer>
+
+<!-- JOKE BUTTON -->
+<button class="joke-btn" onclick="showJoke()">😄 tell me a joke</button>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <span id="progressText">0%</span>
+</div>
+
+<script>
+// Scroll progress
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = Math.round((h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100) || 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = pct + '%';
+});
+
+// Joke button
+const jokes = [
+  "Why do BI engineers never get lost? They always follow the data pipeline.",
+  "SELECT * FROM jokes WHERE funny = true; — 0 rows returned.",
+  "A DAX formula walks into a bar. The bartender says 'CALCULATE your own tab.'",
+  "Why did the Power Automate flow break up? Too many triggers, not enough action.",
+  "I told my dashboard it was beautiful. It said 'that's just a filter.'",
+];
+function showJoke() {
+  const joke = jokes[Math.floor(Math.random() * jokes.length)];
+  const btn = document.querySelector('.joke-btn');
+  btn.textContent = joke;
+  btn.style.maxWidth = '400px';
+  btn.style.whiteSpace = 'normal';
+  btn.style.textAlign = 'left';
+  setTimeout(() => {
+    btn.innerHTML = '😄 tell me a joke';
+    btn.style.maxWidth = '';
+    btn.style.whiteSpace = '';
+    btn.style.textAlign = '';
+  }, 4000);
+}
+</script>
+
+</body>
+</html>
