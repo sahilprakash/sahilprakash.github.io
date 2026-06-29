@@ -3,38 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>~/sahil — BI & Analytics Engineer</title>
+<title>Sahil Prakash — Power BI & Analytics Engineer</title>
+<meta name="description" content="Power BI specialist with 5 years of experience. Advanced DAX, semantic modeling, Power Platform, and data engineering across manufacturing, retail & finance.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0f1117;
-  --surface: #161822;
-  --border: #2a2d3a;
+  --bg: #0a0c10;
+  --surface: #12151c;
+  --surface-2: #1a1e28;
+  --border: #252a36;
+  --gold: #f2c744;
+  --gold-dim: #d4a82e;
+  --gold-glow: rgba(242, 199, 68, 0.1);
   --green: #4ade80;
-  --green-dim: #22c55e;
-  --green-glow: rgba(74, 222, 128, 0.15);
-  --text: #e2e8f0;
-  --text-dim: #8b92a8;
-  --text-muted: #5a6178;
+  --blue: #60a5fa;
+  --text: #e8eaf0;
+  --text-dim: #9099b0;
+  --text-muted: #5a627a;
   --mono: 'JetBrains Mono', monospace;
   --sans: 'Inter', -apple-system, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; overflow-x: hidden; }
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
@@ -42,471 +37,244 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 40px;
-  background: rgba(15, 17, 23, 0.85);
-  backdrop-filter: blur(12px);
+  padding: 14px 40px;
+  background: rgba(10, 12, 16, 0.88);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
-  font-family: var(--mono);
-  font-size: 13px;
+  font-family: var(--mono); font-size: 13px;
 }
-nav .logo { color: var(--green); font-weight: 600; font-size: 15px; text-decoration: none; }
-nav .links { display: flex; gap: 28px; align-items: center; }
-nav .links a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
-nav .links a:hover { color: var(--green); }
+nav .logo { color: var(--gold); font-weight: 600; font-size: 15px; text-decoration: none; }
+nav .links { display: flex; gap: 24px; align-items: center; }
+nav .links a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; font-size: 12px; }
+nav .links a:hover { color: var(--gold); }
 nav .cv-btn {
-  border: 1px solid var(--green);
-  color: var(--green);
-  padding: 6px 16px;
-  font-family: var(--mono);
-  font-size: 12px;
-  text-decoration: none;
-  transition: all 0.2s;
+  border: 1px solid var(--gold); color: var(--gold); padding: 6px 16px;
+  font-family: var(--mono); font-size: 12px; text-decoration: none; transition: all 0.2s;
 }
-nav .cv-btn:hover { background: var(--green); color: var(--bg); }
+nav .cv-btn:hover { background: var(--gold); color: var(--bg); }
 
 /* HERO */
 .hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 60px 60px;
-  gap: 60px;
-  max-width: 1400px;
-  margin: 0 auto;
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 60px 80px; gap: 60px; max-width: 1400px; margin: 0 auto;
 }
 .hero-left { flex: 1; }
 .hero-right { flex-shrink: 0; }
 
 /* Terminal */
 .terminal {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  margin-bottom: 40px;
-  overflow: hidden;
-  max-width: 640px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 36px; overflow: hidden; max-width: 600px;
 }
 .terminal-bar {
   display: flex; align-items: center; gap: 8px;
-  padding: 12px 16px;
-  background: rgba(42, 45, 58, 0.5);
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-muted);
+  padding: 10px 16px; background: rgba(37, 42, 54, 0.4);
+  font-family: var(--mono); font-size: 11px; color: var(--text-muted);
 }
-.terminal-bar .dot { width: 12px; height: 12px; border-radius: 50%; }
-.dot-r { background: #ff5f57; }
-.dot-y { background: #febc2e; }
-.dot-g { background: #28c840; }
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
 .terminal-bar span { margin-left: 8px; }
 .terminal-body {
-  padding: 20px;
-  font-family: var(--mono);
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--text-dim);
+  padding: 18px 20px; font-family: var(--mono); font-size: 12.5px;
+  line-height: 2; color: var(--text-dim);
 }
 .terminal-body .cmd { color: var(--text); }
-.terminal-body .ok { color: var(--green); }
-.terminal-body .arrow { color: var(--green); margin-right: 4px; }
+.terminal-body .ok { color: var(--green); font-weight: 500; }
+.terminal-body .arrow { color: var(--gold); margin-right: 4px; }
 
 /* Badge */
 .badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-bottom: 24px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 16px; border: 1px solid var(--border); border-radius: 4px;
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-bottom: 20px;
 }
-.badge .pulse {
-  width: 8px; height: 8px;
-  background: var(--green);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
+.pulse { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
 
 .hero h1 {
-  font-family: var(--sans);
-  font-size: clamp(42px, 5vw, 72px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -1.5px;
-  margin-bottom: 16px;
+  font-family: var(--sans); font-size: clamp(40px,5vw,68px); font-weight: 800;
+  line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px;
 }
-
-.hero .role {
-  font-family: var(--mono);
-  font-size: 18px;
-  color: var(--green);
-  margin-bottom: 16px;
-}
+.hero .role { font-family: var(--mono); font-size: 17px; color: var(--gold); margin-bottom: 20px; }
 .hero .role::before { content: '> '; opacity: 0.5; }
-.cursor {
-  display: inline-block;
-  width: 10px; height: 22px;
-  background: var(--green);
-  vertical-align: text-bottom;
-  animation: blink 1s step-end infinite;
-}
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.cursor { display:inline-block;width:9px;height:20px;background:var(--gold);vertical-align:text-bottom;animation:blink 1s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
 
-.hero .tagline {
-  font-size: 16px;
-  color: var(--text-dim);
-  max-width: 540px;
-  line-height: 1.7;
-  margin-bottom: 32px;
-}
+.hero .tagline { font-size: 15.5px; color: var(--text-dim); max-width: 540px; line-height: 1.75; margin-bottom: 28px; }
 
-.hero-actions { display: flex; gap: 16px; align-items: center; margin-bottom: 28px; }
+/* Hero Stats */
+.hero-stats {
+  display: flex; gap: 32px; margin-bottom: 32px;
+  padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.hero-stat .stat-num { font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--gold); }
+.hero-stat .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+.hero-actions { display: flex; gap: 14px; align-items: center; margin-bottom: 24px; }
 .btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--green);
-  color: var(--bg);
-  padding: 14px 28px;
-  font-family: var(--mono);
-  font-size: 14px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--bg);padding:13px 26px;
+  font-family:var(--mono);font-size:13px;font-weight:600;
+  border:none;cursor:pointer;text-decoration:none;transition:all 0.2s;
 }
-.btn-primary:hover { background: var(--green-dim); transform: translateY(-1px); }
+.btn-primary:hover { background:var(--gold-dim);transform:translateY(-1px); }
 .btn-secondary {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: transparent;
-  color: var(--text);
-  padding: 14px 28px;
-  font-family: var(--mono);
-  font-size: 14px;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s;
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--text);padding:13px 26px;
+  font-family:var(--mono);font-size:13px;border:1px solid var(--border);
+  cursor:pointer;text-decoration:none;transition:all 0.2s;
 }
-.btn-secondary:hover { border-color: var(--text-dim); }
+.btn-secondary:hover { border-color:var(--text-dim); }
 
-.social-links { display: flex; gap: 16px; }
-.social-links a {
-  color: var(--text-muted);
-  transition: color 0.2s;
-  display: flex; align-items: center;
-}
-.social-links a:hover { color: var(--green); }
-.social-links svg { width: 20px; height: 20px; }
+.social-links { display:flex;gap:16px; }
+.social-links a { color:var(--text-muted);transition:color 0.2s;display:flex;align-items:center; }
+.social-links a:hover { color:var(--gold); }
+.social-links svg { width:20px;height:20px; }
 
 /* ID Card */
 .id-card {
-  width: 300px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 28px;
-  position: relative;
-  overflow: hidden;
+  width: 290px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 26px; position: relative; overflow: hidden;
 }
-.id-card::before {
-  content: '';
-  position: absolute;
-  top: -1px; right: -1px;
-  width: 14px; height: 14px;
-  background: var(--green);
-  border-radius: 0 12px 0 0;
-}
-.id-card .id-header {
-  display: flex; align-items: center; gap: 8px;
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--green);
-  margin-bottom: 24px;
-}
-.id-card .id-header .diamond { font-size: 10px; }
-.id-card .id-name {
-  font-family: var(--sans);
-  font-weight: 800;
-  font-size: 36px;
-  line-height: 1;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-.id-card .id-role {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--green);
-  margin-bottom: 24px;
-}
-.id-card .id-role::before { content: '> '; opacity: 0.5; }
-.id-card .id-footer {
-  display: flex; justify-content: space-between; align-items: flex-end;
-}
-.id-card .id-meta {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
+.id-card::before { content:'';position:absolute;top:-1px;right:-1px;width:14px;height:14px;background:var(--gold);border-radius:0 12px 0 0; }
+.id-card .id-header { display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--gold);margin-bottom:20px; }
+.id-card .id-name { font-weight:800;font-size:34px;line-height:1;letter-spacing:-0.5px;text-transform:uppercase;margin-bottom:16px; }
+.id-card .id-role { font-family:var(--mono);font-size:12px;color:var(--gold);margin-bottom:6px; }
+.id-card .id-role::before { content:'> ';opacity:0.5; }
+.id-card .id-cert { font-family:var(--mono);font-size:11px;color:var(--green);margin-bottom:20px; }
+.id-card .id-footer { display:flex;justify-content:space-between;align-items:flex-end; }
+.id-card .id-meta { font-family:var(--mono);font-size:10px;color:var(--text-muted);line-height:1.7; }
 .id-card .id-avatar {
-  width: 48px; height: 48px;
-  background: var(--green);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--bg);
+  width:46px;height:46px;background:var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;color:var(--bg);
 }
 
-/* Lanyard */
-.lanyard-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; }
-.lanyard-clip {
-  width: 24px; height: 24px;
-  border: 3px solid var(--text-muted);
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
-}
-.lanyard-strap {
-  width: 3px;
-  height: 40px;
-  background: var(--text-muted);
-  margin-top: -2px;
-  margin-bottom: -2px;
-}
+.lanyard-wrapper { display:flex;flex-direction:column;align-items:center; }
+.lanyard-clip { width:22px;height:22px;border:3px solid var(--text-muted);border-radius:50%;z-index:2; }
+.lanyard-strap { width:3px;height:36px;background:var(--text-muted);margin-top:-2px;margin-bottom:-2px; }
 
 /* SECTIONS */
-section {
-  padding: 80px 60px;
-  max-width: 1400px;
-  margin: 0 auto;
+section { padding:80px 60px;max-width:1400px;margin:0 auto; }
+.section-label { font-family:var(--mono);font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px; }
+section h2 { font-size:34px;font-weight:700;letter-spacing:-0.5px;margin-bottom:16px; }
+section .section-desc { color:var(--text-dim);font-size:15px;max-width:600px;margin-bottom:40px;line-height:1.7; }
+
+/* WHAT I DO - Power BI focused */
+.what-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px; }
+.what-card {
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:28px;transition:all 0.2s;position:relative;overflow:hidden;
 }
-.section-label {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--green);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+.what-card:hover { border-color:var(--gold);transform:translateY(-2px); }
+.what-card.featured { border-color: var(--gold); background: linear-gradient(135deg, var(--surface) 0%, rgba(242,199,68,0.03) 100%); }
+.what-card.featured::after {
+  content:'PRIMARY';position:absolute;top:12px;right:12px;
+  font-family:var(--mono);font-size:9px;color:var(--gold);
+  background:var(--gold-glow);padding:3px 8px;border-radius:3px;letter-spacing:1px;
 }
-section h2 {
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 40px;
-}
+.what-card h4 { font-size:16px;font-weight:600;margin-bottom:8px; }
+.what-card p { color:var(--text-dim);font-size:13px;line-height:1.7; }
 
 /* EXPERIENCE */
-.timeline { position: relative; }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 1px;
-  background: var(--border);
+.timeline { position:relative; }
+.timeline::before { content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border); }
+.timeline-item { padding-left:32px;margin-bottom:44px;position:relative; }
+.timeline-item::before { content:'';position:absolute;left:-4px;top:8px;width:9px;height:9px;background:var(--gold);border-radius:50%; }
+.timeline-item .period { font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px; }
+.timeline-item h3 { font-size:18px;font-weight:600;margin-bottom:2px; }
+.timeline-item .company { color:var(--gold);font-size:13px;margin-bottom:10px; }
+.timeline-item .exp-bullets { list-style:none;padding:0; }
+.timeline-item .exp-bullets li {
+  color:var(--text-dim);font-size:13.5px;line-height:1.7;
+  padding-left:16px;margin-bottom:8px;position:relative;
 }
-.timeline-item {
-  padding-left: 32px;
-  margin-bottom: 40px;
-  position: relative;
-}
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -4px; top: 8px;
-  width: 9px; height: 9px;
-  background: var(--green);
-  border-radius: 50%;
-}
-.timeline-item .period {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-.timeline-item h3 { font-size: 18px; font-weight: 600; margin-bottom: 2px; }
-.timeline-item .company { color: var(--green); font-size: 14px; margin-bottom: 8px; }
-.timeline-item p { color: var(--text-dim); font-size: 14px; line-height: 1.7; }
-
-/* SKILLS GRID */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-.skill-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 24px;
-  transition: border-color 0.2s;
-}
-.skill-card:hover { border-color: var(--green); }
-.skill-card h4 {
-  font-family: var(--mono);
-  font-size: 14px;
-  color: var(--green);
-  margin-bottom: 12px;
-}
-.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.skill-tag {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-dim);
-  background: rgba(42, 45, 58, 0.6);
-  padding: 4px 10px;
-  border-radius: 3px;
-}
+.timeline-item .exp-bullets li::before { content:'▹';position:absolute;left:0;color:var(--gold); }
+.timeline-item .tech-used { font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-top:12px; }
 
 /* PROJECTS */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 20px;
-}
+.projects-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px; }
 .project-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 28px;
-  transition: all 0.2s;
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:26px;transition:all 0.2s;
 }
-.project-card:hover { border-color: var(--green); transform: translateY(-2px); }
-.project-card h4 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
-.project-card .project-desc { color: var(--text-dim); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
-.project-card .project-tech {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-muted);
-}
+.project-card:hover { border-color:var(--gold);transform:translateY(-2px); }
+.project-card .project-type { font-family:var(--mono);font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px; }
+.project-card h4 { font-size:17px;font-weight:600;margin-bottom:8px; }
+.project-card .project-desc { color:var(--text-dim);font-size:13px;line-height:1.65;margin-bottom:14px; }
+.project-card .project-tech { font-family:var(--mono);font-size:11px;color:var(--text-muted); }
+.project-card .project-impact { font-family:var(--mono);font-size:11px;color:var(--green);margin-top:8px; }
+
+/* SKILLS */
+.skills-container { display:flex;flex-direction:column;gap:24px; }
+.skill-group { background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px; }
+.skill-group.primary { border-color:var(--gold);background:linear-gradient(135deg,var(--surface) 0%,rgba(242,199,68,0.03) 100%); }
+.skill-group-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:14px; }
+.skill-group h4 { font-family:var(--mono);font-size:13px;color:var(--gold); }
+.skill-group .skill-level { font-family:var(--mono);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px; }
+.skill-tags { display:flex;flex-wrap:wrap;gap:8px; }
+.skill-tag { font-family:var(--mono);font-size:12px;color:var(--text-dim);background:var(--surface-2);padding:5px 12px;border-radius:3px; }
+.skill-tag.highlight { color:var(--gold);background:var(--gold-glow); }
 
 /* CERTS */
-.certs-list { display: flex; flex-direction: column; gap: 12px; }
+.certs-list { display:flex;flex-direction:column;gap:10px; }
 .cert-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 14px;
+  display:flex;align-items:center;gap:14px;padding:16px 20px;
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:14px;
 }
-.cert-item .cert-icon { color: var(--green); font-family: var(--mono); font-size: 16px; }
-.cert-item .cert-status {
-  margin-left: auto;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-muted);
-}
-.cert-item .cert-status.active { color: var(--green); }
+.cert-item.primary { border-color:var(--gold); }
+.cert-icon { color:var(--gold);font-family:var(--mono);font-size:14px; }
+.cert-status { margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-muted); }
+.cert-status.active { color:var(--green); }
 
 /* CONTACT */
 .contact-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 40px;
-  max-width: 600px;
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:36px;max-width:560px;
 }
-.contact-box p { color: var(--text-dim); font-size: 15px; margin-bottom: 24px; line-height: 1.7; }
-.contact-links { display: flex; flex-direction: column; gap: 12px; }
+.contact-box p { color:var(--text-dim);font-size:14px;margin-bottom:24px;line-height:1.7; }
+.contact-links { display:flex;flex-direction:column;gap:12px; }
 .contact-link {
-  display: inline-flex; align-items: center; gap: 10px;
-  color: var(--text);
-  text-decoration: none;
-  font-family: var(--mono);
-  font-size: 14px;
-  transition: color 0.2s;
+  display:inline-flex;align-items:center;gap:10px;color:var(--text);
+  text-decoration:none;font-family:var(--mono);font-size:13px;transition:color 0.2s;
 }
-.contact-link:hover { color: var(--green); }
-.contact-link svg { width: 18px; height: 18px; color: var(--green); }
+.contact-link:hover { color:var(--gold); }
+.contact-link svg { width:18px;height:18px;color:var(--gold); }
 
 /* FOOTER */
 footer {
-  padding: 32px 60px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-muted);
-  max-width: 1400px;
-  margin: 0 auto;
+  padding:28px 60px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:11px;color:var(--text-muted);max-width:1400px;margin:0 auto;
 }
 
-/* JOKE BUTTON */
+/* JOKE */
 .joke-btn {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border: 1px solid var(--green);
-  border-radius: 20px;
-  background: transparent;
-  color: var(--green);
-  font-family: var(--mono);
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  z-index: 50;
+  position:fixed;bottom:20px;left:20px;display:inline-flex;align-items:center;gap:8px;
+  padding:7px 14px;border:1px solid var(--gold);border-radius:20px;background:transparent;
+  color:var(--gold);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all 0.2s;z-index:50;
 }
-.joke-btn:hover { background: var(--green-glow); }
+.joke-btn:hover { background:var(--gold-glow); }
 
-/* SCROLL PROGRESS */
-.scroll-progress {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-muted);
-  z-index: 50;
-  display: flex; align-items: center; gap: 8px;
-}
-.progress-bar {
-  width: 60px; height: 3px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  background: var(--green);
-  width: 0%;
-  transition: width 0.1s;
-}
+/* SCROLL */
+.scroll-progress { position:fixed;bottom:20px;right:20px;font-family:var(--mono);font-size:10px;color:var(--text-muted);z-index:50;display:flex;align-items:center;gap:8px; }
+.progress-bar { width:50px;height:2px;background:var(--border);border-radius:2px;overflow:hidden; }
+.progress-fill { height:100%;background:var(--gold);width:0%;transition:width 0.1s; }
 
 /* MOBILE */
-@media (max-width: 900px) {
-  nav { padding: 12px 20px; }
-  nav .links { display: none; }
-  .hero { flex-direction: column; padding: 100px 24px 40px; gap: 40px; }
-  .hero-right { order: -1; }
-  .id-card { width: 260px; }
-  section { padding: 60px 24px; }
-  .projects-grid { grid-template-columns: 1fr; }
-  footer { padding: 24px; flex-direction: column; gap: 8px; }
+@media(max-width:900px){
+  nav{padding:12px 20px} nav .links{display:none}
+  .hero{flex-direction:column;padding:100px 24px 40px;gap:32px}
+  .hero-right{order:-1}
+  .hero-stats{gap:20px;flex-wrap:wrap}
+  .id-card{width:250px}
+  section{padding:60px 24px}
+  .what-grid,.projects-grid{grid-template-columns:1fr}
+  footer{padding:20px 24px;flex-direction:column;gap:8px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="logo">~/sahil</a>
   <div class="links">
@@ -516,49 +284,66 @@ footer {
     <a href="#skills">skills</a>
     <a href="#certs">certs</a>
     <a href="#contact">contact</a>
-    <a href="./cv.pdf" class="cv-btn" target="_blank">cv.pdf</a>
+    <a href="./cv.pdf" target="_blank" class="cv-btn">cv.pdf</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero" id="about">
   <div class="hero-left">
-    <!-- Terminal -->
     <div class="terminal">
       <div class="terminal-bar">
-        <span class="dot dot-r"></span>
-        <span class="dot dot-y"></span>
-        <span class="dot dot-g"></span>
-        <span>sahil@dev: ~/portfolio</span>
+        <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        <span>sahil@powerbi: ~/portfolio</span>
       </div>
       <div class="terminal-body">
         <div><span class="cmd">$ npx sahilprakash --run</span></div>
         <div><span class="arrow">▸</span> booting portfolio v1.0.0</div>
-        <div><span class="arrow">▸</span> loading profile ............... <span class="ok">ok</span></div>
-        <div><span class="arrow">▸</span> BI & Analytics Engineer ...... <span class="ok">ok</span></div>
-        <div><span class="arrow">▸</span> Power BI · DAX · GCP ........ <span class="ok">ok</span></div>
-        <div><span class="arrow">▸</span> Power Platform · AI ......... <span class="ok">ok</span></div>
+        <div><span class="arrow">▸</span> loading profile .............. <span class="ok">ok</span></div>
+        <div><span class="arrow">▸</span> Power BI · DAX · Semantic .... <span class="ok">ok</span></div>
+        <div><span class="arrow">▸</span> Power Platform · Copilot ..... <span class="ok">ok</span></div>
+        <div><span class="arrow">▸</span> SQL · BigQuery · GCP ......... <span class="ok">ok</span></div>
+        <div><span class="arrow">▸</span> PL-300 certified ............. <span class="ok">ok</span></div>
         <div><span class="arrow">▸</span> ready.</div>
       </div>
     </div>
 
     <div class="badge">
       <span class="pulse"></span>
-      <span>◆ DEV ID#2003 · open to opportunities</span>
+      <span>◆ PL-300 CERTIFIED · open to opportunities</span>
     </div>
 
     <h1>Sahil<br>Prakash</h1>
-
-    <div class="role">BI & Analytics Engineer<span class="cursor"></span></div>
+    <div class="role">Power BI & Analytics Engineer<span class="cursor"></span></div>
 
     <p class="tagline">
-      I build dashboards used by 500+ users, automate workflows across 10+ countries,
-      and ship AI-powered solutions on Power Platform & GCP — with clean data architecture baked in.
+      5 years turning raw operational data into decisions — across manufacturing, retail, finance,
+      and people analytics. I build Power BI semantic models with Advanced DAX, engineer data
+      pipelines on SQL/BigQuery, and embed Copilot into reporting workflows.
     </p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years in BI</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Dashboard Users</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">30%</div>
+        <div class="stat-label">Manual Effort Cut</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Employee Ecosystem</div>
+      </div>
+    </div>
 
     <div class="hero-actions">
       <a href="#projects" class="btn-primary">view work →</a>
-      <a href="./cv.pdf" class="btn-secondary" target="_blank">📄 cv.pdf</a>
+      <a href="./cv.pdf" target="_blank" class="btn-secondary">📄 cv.pdf</a>
     </div>
 
     <div class="social-links">
@@ -579,16 +364,12 @@ footer {
       <div class="lanyard-clip"></div>
       <div class="lanyard-strap"></div>
       <div class="id-card">
-        <div class="id-header">
-          <span class="diamond">◆</span> DEV ID#2003
-        </div>
+        <div class="id-header"><span>◆</span> PL-300 CERTIFIED</div>
         <div class="id-name">SAHIL<br>PRAKASH</div>
-        <div class="id-role">BI & Analytics Engineer</div>
+        <div class="id-role">Power BI & Analytics Engineer</div>
+        <div class="id-cert">✓ Microsoft Certified</div>
         <div class="id-footer">
-          <div class="id-meta">
-            Hyderabad, IN<br>
-            PORTFOLIO · EDITION 2026
-          </div>
+          <div class="id-meta">Hyderabad, IN<br>PORTFOLIO · 2026</div>
           <div class="id-avatar">SP</div>
         </div>
       </div>
@@ -596,149 +377,196 @@ footer {
   </div>
 </div>
 
+<!-- WHAT I DO -->
+<section id="expertise">
+  <div class="section-label">// what i do</div>
+  <h2>Power BI at the Core</h2>
+  <p class="section-desc">Everything I build starts with clean data modeling and ends with dashboards people actually use.</p>
+  <div class="what-grid">
+    <div class="what-card featured">
+      <h4>Power BI & Advanced DAX</h4>
+      <p>Semantic models, star schemas, DirectQuery/Import optimization, RLS, Power Query (M). PL-300 certified. Reports serving 500+ users across global teams.</p>
+    </div>
+    <div class="what-card">
+      <h4>Power Platform & Copilot</h4>
+      <p>Canvas Power Apps, Power Automate (cloud + desktop), Copilot Studio agents. Built a bilingual AI agent with Entra SSO serving 90 monthly active users.</p>
+    </div>
+    <div class="what-card">
+      <h4>SQL & Data Engineering</h4>
+      <p>BigQuery, T-SQL, stored procedures, CTEs, window functions. PSA-to-BigQuery pipelines, ETL/ELT, data warehouse views, and governed data layers for AI platforms.</p>
+    </div>
+    <div class="what-card">
+      <h4>People & Workforce Analytics</h4>
+      <p>Headcount, joiner/leaver, retention, attrition dashboards on dimensional models — supporting talent strategy across 10,000+ employee ecosystems.</p>
+    </div>
+  </div>
+</section>
+
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-label">// experience</div>
   <h2>Where I've Built</h2>
+
   <div class="timeline">
     <div class="timeline-item">
-      <div class="period">Jul 2021 — Apr 2026</div>
-      <h3>Senior Software Engineer</h3>
-      <div class="company">Sopra Steria · Manitowoc (France)</div>
-      <p>
-        Built 20+ Power Automate flows across 10+ countries for a global crane manufacturer.
-        Shipped CEA & FAD Power Apps on Dataverse with RBAC.
-        Created PotainETech — a Copilot Studio agent with 41 components, Entra ID SSO,
-        English-French support, serving 90 MAU. Delivered dashboards used by 500+ users,
-        cutting 30% manual overhead and 10% report latency.
-      </p>
+      <div class="period">Jul 2021 — Mar 2026 · 4 yrs 9 mos</div>
+      <h3>Senior Software Engineer / Software Engineer</h3>
+      <div class="company">Sopra Steria · Clients: Manitowoc (France), E.Leclerc (France), People Analytics</div>
+      <ul class="exp-bullets">
+        <li>Designed and optimized Power BI semantic models with Advanced DAX, Power Query, and RLS for large-scale manufacturing analytics — cut report latency by 10%.</li>
+        <li>Built PotainETech, a production Copilot Studio AI agent with Entra SSO, bilingual English-French support, and self-service analytics over enterprise data.</li>
+        <li>Architected 8+ Canvas Power Apps and 20+ Power Automate flows across 10+ countries, saving 12 hours/week (30% of manual operational effort).</li>
+        <li>Engineered executive People & Workforce Analytics dashboards (headcount, joiner/leaver, retention, attrition) across a 10,000+ employee ecosystem.</li>
+        <li>Delivered secure reporting adopted by 500+ departmental users with row-level security and data masking.</li>
+        <li>Mentored 5+ junior developers and authored BI/automation standardization guidelines.</li>
+        <li>Optimized heavy SQL queries, T-SQL logic, and data-warehouse views for E.Leclerc retail reporting.</li>
+      </ul>
+      <div class="tech-used">Power BI · DAX · Power Query · SQL/T-SQL · Power Apps · Power Automate · Copilot Studio · Dataverse · Azure (Entra ID)</div>
     </div>
+
     <div class="timeline-item">
-      <div class="period">Apr 2026 — Jul 2026</div>
+      <div class="period">Apr 2026 — Present</div>
       <h3>Specialist — BI & Analytics</h3>
       <div class="company">Egen (formerly SpringML) · Hyderabad</div>
-      <p>
-        Designed WeeklyBench immutable snapshot architecture resolving a multi-day bench count
-        discrepancy in Certinia PSA. Built Finance 360 dashboards (AR/AP/Working Capital) on
-        BigQuery. Stabilized the data layer for EDITH, Egen's Gemini-based multi-agent AI platform.
-      </p>
+      <ul class="exp-bullets">
+        <li>Stabilized the semantic data layer for EDITH, an internal Gemini-based AI analytics platform — hardened snapshot logic and stored procedures for governed, trustworthy datasets.</li>
+        <li>Exposed business metadata and semantic definitions across 12+ source objects, re-engineering the reporting query layer for accurate historical data.</li>
+        <li>Authored reusable SQL stored procedures and data-integration logic across a PSA → BigQuery pipeline, restoring dimensional reporting accuracy.</li>
+        <li>Partnered with US-based global stakeholders and senior leadership for decision-ready reporting.</li>
+      </ul>
+      <div class="tech-used">BigQuery · SQL · Looker Studio · GCP · Data Modeling · Semantic Modeling</div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-label">// projects</div>
-  <h2>Selected Work</h2>
+  <div class="section-label">// selected work</div>
+  <h2>Projects</h2>
+
   <div class="projects-grid">
     <div class="project-card">
+      <div class="project-type">Power BI</div>
+      <h4>Manufacturing Analytics Suite</h4>
+      <div class="project-desc">Enterprise Power BI semantic models with star schema, DirectQuery/Import optimization, and RLS for Manitowoc's global crane operations.</div>
+      <div class="project-tech">power-bi · dax · power-query · rls · directquery</div>
+      <div class="project-impact">↓ 10% report latency · 500+ users</div>
+    </div>
+    <div class="project-card">
+      <div class="project-type">Power BI · People Analytics</div>
+      <h4>Workforce Analytics Dashboards</h4>
+      <div class="project-desc">Executive-level headcount, joiner/leaver, retention, and attrition dashboards on governed dimensional models for talent strategy.</div>
+      <div class="project-tech">power-bi · dax · dimensional-modeling · data-governance</div>
+      <div class="project-impact">10,000+ employee ecosystem</div>
+    </div>
+    <div class="project-card">
+      <div class="project-type">Copilot Studio · AI</div>
       <h4>PotainETech Agent</h4>
-      <div class="project-desc">
-        Copilot Studio virtual agent for Manitowoc — 41 topics, Entra ID SSO,
-        bilingual English-French, 90 monthly active users across crane operations.
-      </div>
+      <div class="project-desc">Production conversational AI agent — 41 topics, Entra ID SSO, bilingual English-French, self-service analytics over enterprise data.</div>
       <div class="project-tech">copilot-studio · entra-id · dataverse · power-platform</div>
+      <div class="project-impact">90 MAU · bilingual</div>
     </div>
     <div class="project-card">
-      <h4>CEA / FAD Power Apps</h4>
-      <div class="project-desc">
-        Capital Expenditure Approval & Fixed Asset Disposal apps on Dataverse with
-        role-based access control, multi-level approval workflows, and audit trails.
-      </div>
+      <div class="project-type">Power Apps · Automation</div>
+      <h4>CEA & FAD Power Apps</h4>
+      <div class="project-desc">Capital Expenditure Approval and Fixed Asset Disposal apps on Dataverse with RBAC, multi-level approval workflows, and audit trails.</div>
       <div class="project-tech">power-apps · dataverse · power-automate · rbac</div>
+      <div class="project-impact">↓ 30% manual effort · 10+ countries</div>
     </div>
     <div class="project-card">
-      <h4>WeeklyBench Architecture</h4>
-      <div class="project-desc">
-        Immutable snapshot design that resolved in-place EVA record mutation issues in
-        Certinia PSA bench count analytics. Enabled reliable historical trend reporting.
-      </div>
-      <div class="project-tech">bigquery · certinia · data-architecture · sql</div>
+      <div class="project-type">Data Engineering</div>
+      <h4>EDITH — AI Analytics Platform</h4>
+      <div class="project-desc">Stabilized the governed data layer powering Egen's Gemini-based multi-agent AI platform. Hardened snapshot logic and stored procedures.</div>
+      <div class="project-tech">bigquery · sql · gcp · semantic-modeling · gemini</div>
+      <div class="project-impact">12+ source objects governed</div>
     </div>
     <div class="project-card">
-      <h4>Finance 360 Dashboard</h4>
-      <div class="project-desc">
-        AR/AP/Working Capital dashboards on BigQuery views — unified financial ledger
-        serving leadership with real-time visibility into cash flow.
-      </div>
+      <div class="project-type">Data Engineering</div>
+      <h4>Finance 360 Dashboards</h4>
+      <div class="project-desc">AR/AP/Working Capital dashboards on BigQuery — unified financial ledger views, PSA pipeline integration, accurate dimensional reporting.</div>
       <div class="project-tech">bigquery · looker-studio · sql · data-modeling</div>
-    </div>
-    <div class="project-card">
-      <h4>Job Search Automation</h4>
-      <div class="project-desc">
-        GitHub-hosted pipeline: Adzuna API for job fetch, Anthropic API for fit scoring
-        and pitch generation, with a tracker for manual final submission.
-      </div>
-      <div class="project-tech">python · anthropic-api · adzuna-api · automation</div>
-    </div>
-    <div class="project-card">
-      <h4>Global Workflow Automation</h4>
-      <div class="project-desc">
-        20+ Power Automate cloud flows deployed across 10+ countries for Manitowoc,
-        streamlining crane operations and reducing manual overhead by 30%.
-      </div>
-      <div class="project-tech">power-automate · sharepoint · teams · global-ops</div>
+      <div class="project-impact">Real-time cash flow visibility</div>
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">// skills</div>
-  <h2>Tech Stack</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <h4>BI & Visualization</h4>
+  <div class="section-label">// tech stack</div>
+  <h2>Skills</h2>
+
+  <div class="skills-container">
+    <div class="skill-group primary">
+      <div class="skill-group-header">
+        <h4>⬥ BI & Visualization — Primary</h4>
+        <span class="skill-level">5 years · PL-300 certified</span>
+      </div>
       <div class="skill-tags">
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">DAX</span>
+        <span class="skill-tag highlight">Power BI Desktop</span>
+        <span class="skill-tag highlight">Power BI Service</span>
+        <span class="skill-tag highlight">Advanced DAX</span>
+        <span class="skill-tag highlight">Power Query (M)</span>
+        <span class="skill-tag">Semantic Modeling</span>
+        <span class="skill-tag">Star Schema</span>
+        <span class="skill-tag">RLS</span>
+        <span class="skill-tag">DirectQuery</span>
         <span class="skill-tag">Looker Studio</span>
-        <span class="skill-tag">Data Modeling</span>
+        <span class="skill-tag">KPI Design</span>
       </div>
     </div>
-    <div class="skill-card">
-      <h4>Power Platform</h4>
+    <div class="skill-group">
+      <div class="skill-group-header">
+        <h4>Power Platform & AI</h4>
+        <span class="skill-level">4 years</span>
+      </div>
       <div class="skill-tags">
-        <span class="skill-tag">Power Apps</span>
+        <span class="skill-tag">Power Apps (Canvas)</span>
         <span class="skill-tag">Power Automate</span>
         <span class="skill-tag">Copilot Studio</span>
         <span class="skill-tag">Dataverse</span>
+        <span class="skill-tag">GenAI / RAG</span>
+        <span class="skill-tag">Azure OpenAI</span>
+        <span class="skill-tag">RPA</span>
       </div>
     </div>
-    <div class="skill-card">
-      <h4>Cloud & Data</h4>
+    <div class="skill-group">
+      <div class="skill-group-header">
+        <h4>Data & Analytics Engineering</h4>
+        <span class="skill-level">5 years</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">T-SQL</span>
+        <span class="skill-tag">Google BigQuery</span>
+        <span class="skill-tag">CTEs / Window Functions</span>
+        <span class="skill-tag">ETL / ELT</span>
+        <span class="skill-tag">Data Modeling</span>
+        <span class="skill-tag">Data Warehousing</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-header">
+        <h4>Cloud & Languages</h4>
+      </div>
       <div class="skill-tags">
         <span class="skill-tag">GCP</span>
-        <span class="skill-tag">BigQuery</span>
+        <span class="skill-tag">Microsoft Fabric</span>
         <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Spring Boot</span>
       </div>
     </div>
-    <div class="skill-card">
-      <h4>AI & Automation</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Anthropic API</span>
-        <span class="skill-tag">Gemini</span>
-        <span class="skill-tag">RAG</span>
-        <span class="skill-tag">LLMOps</span>
+    <div class="skill-group">
+      <div class="skill-group-header">
+        <h4>Domain & Process</h4>
       </div>
-    </div>
-    <div class="skill-card">
-      <h4>Identity & Security</h4>
       <div class="skill-tags">
-        <span class="skill-tag">Entra ID</span>
-        <span class="skill-tag">SSO</span>
-        <span class="skill-tag">RBAC</span>
-        <span class="skill-tag">RLS</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <h4>DevOps & Tools</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">GitHub Actions</span>
-        <span class="skill-tag">ALM</span>
-        <span class="skill-tag">Agile</span>
+        <span class="skill-tag">People & Workforce Analytics</span>
+        <span class="skill-tag">Manufacturing</span>
+        <span class="skill-tag">Retail</span>
+        <span class="skill-tag">Data Governance</span>
+        <span class="skill-tag">Agile / Scrum</span>
+        <span class="skill-tag">JIRA</span>
       </div>
     </div>
   </div>
@@ -749,15 +577,15 @@ footer {
   <div class="section-label">// certifications</div>
   <h2>Credentials</h2>
   <div class="certs-list">
-    <div class="cert-item">
+    <div class="cert-item primary">
       <span class="cert-icon">◆</span>
-      <span>PL-300 — Microsoft Power BI Data Analyst</span>
+      <span>PL-300 — Microsoft Power BI Data Analyst Associate</span>
       <span class="cert-status active">✓ certified</span>
     </div>
     <div class="cert-item">
       <span class="cert-icon">◆</span>
       <span>DP-600 — Microsoft Fabric Analytics Engineer</span>
-      <span class="cert-status">in progress</span>
+      <span class="cert-status">pursuing</span>
     </div>
     <div class="cert-item">
       <span class="cert-icon">◆</span>
@@ -766,8 +594,21 @@ footer {
     </div>
     <div class="cert-item">
       <span class="cert-icon">◆</span>
-      <span>ScrumStudy — Scrum Fundamentals Certified</span>
+      <span>ScrumStudy — Agile Scrum Fundamentals</span>
       <span class="cert-status active">✓ certified</span>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section>
+  <div class="section-label">// education</div>
+  <h2>Education</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="period">Aug 2017 — Jun 2021</div>
+      <h3>B.Tech, Information Technology</h3>
+      <div class="company">RCC Institute of Information Technology, Kolkata</div>
     </div>
   </div>
 </section>
@@ -777,11 +618,12 @@ footer {
   <div class="section-label">// contact</div>
   <h2>Let's Connect</h2>
   <div class="contact-box">
-    <p>
-      Open to roles in BI, Analytics Engineering, and Data Engineering.
-      Currently based in Hyderabad. Drop me a line.
-    </p>
+    <p>Open to Power BI, Analytics Engineering, and Data Engineering roles. Based in Hyderabad. Let's talk.</p>
     <div class="contact-links">
+      <a href="tel:+918340185564" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91-8340185564
+      </a>
       <a href="mailto:sahilprakash33.sp@gmail.com" class="contact-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         sahilprakash33.sp@gmail.com
@@ -798,51 +640,37 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span>built with ☕ and claude · 2026</span>
   <span>~/sahil</span>
 </footer>
 
-<!-- JOKE BUTTON -->
 <button class="joke-btn" onclick="showJoke()">😄 tell me a joke</button>
 
-<!-- SCROLL PROGRESS -->
 <div class="scroll-progress">
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
   <span id="progressText">0%</span>
 </div>
 
 <script>
-// Scroll progress
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const pct = Math.round((h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100) || 0;
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressText').textContent = pct + '%';
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const p=Math.round((h.scrollTop/(h.scrollHeight-h.clientHeight))*100)||0;
+  document.getElementById('progressFill').style.width=p+'%';
+  document.getElementById('progressText').textContent=p+'%';
 });
-
-// Joke button
-const jokes = [
-  "Why do BI engineers never get lost? They always follow the data pipeline.",
+const jokes=[
+  "Why do Power BI devs never get lost? They always have a star schema to follow.",
   "SELECT * FROM jokes WHERE funny = true; — 0 rows returned.",
-  "A DAX formula walks into a bar. The bartender says 'CALCULATE your own tab.'",
-  "Why did the Power Automate flow break up? Too many triggers, not enough action.",
-  "I told my dashboard it was beautiful. It said 'that's just a filter.'",
+  "My CALCULATE walked into a bar. The bartender said: 'Context transition only, no drinks.'",
+  "Why did the DAX measure break up with the column? Too many circular dependencies.",
+  "I asked my dashboard for relationship advice. It said: 'Define your cardinality first.'",
 ];
-function showJoke() {
-  const joke = jokes[Math.floor(Math.random() * jokes.length)];
-  const btn = document.querySelector('.joke-btn');
-  btn.textContent = joke;
-  btn.style.maxWidth = '400px';
-  btn.style.whiteSpace = 'normal';
-  btn.style.textAlign = 'left';
-  setTimeout(() => {
-    btn.innerHTML = '😄 tell me a joke';
-    btn.style.maxWidth = '';
-    btn.style.whiteSpace = '';
-    btn.style.textAlign = '';
-  }, 4000);
+function showJoke(){
+  const j=jokes[Math.floor(Math.random()*jokes.length)];
+  const b=document.querySelector('.joke-btn');
+  b.textContent=j;b.style.maxWidth='380px';b.style.whiteSpace='normal';b.style.textAlign='left';
+  setTimeout(()=>{b.innerHTML='😄 tell me a joke';b.style.maxWidth='';b.style.whiteSpace='';b.style.textAlign='';},4000);
 }
 </script>
 
